@@ -1,17 +1,17 @@
-import { useReducer } from 'react';
+import { useContext } from 'react';
 
 import './App.css';
 import ColorPalette from './components/ColourPalette';
 import ColourSelector from './components/ColourSelector';
-import colorReducer, { initialState } from './lib/color-reducer';
+import { ColorContext } from './context/context';
 
 function App() {
-  const [state, dispatch] = useReducer(colorReducer, initialState);
+  const { hexColor, dispatch } = useContext(ColorContext);
 
   return (
     <>
-      <ColorPalette hexColor={state.hexColor} dispatch={dispatch} />
-      <ColourSelector hexColor={state.hexColor} dispatch={dispatch} />
+      <ColorPalette hexColor={hexColor} dispatch={dispatch} />
+      <ColourSelector hexColor={hexColor} dispatch={dispatch} />
     </>
   );
 }
