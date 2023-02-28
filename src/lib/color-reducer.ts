@@ -14,6 +14,7 @@ const colorReducer = (
   }
 
   if (action.type === 'update-rgb-color') {
+    console.log(action.payload);
     const hexColor = '#' + rgb.hex(action.payload.rgb);
     return { ...state, hexColor };
   }

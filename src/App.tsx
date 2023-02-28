@@ -1,15 +1,17 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
+
 import './App.css';
 import ColorPalette from './components/ColourPalette';
+import ColourSelector from './components/ColourSelector';
+import colorReducer, { initialState } from './lib/color-reducer';
 
 function App() {
-  const [value, setValue] = useState('');
-  const onSubmit = (e: any) => {
-    console.log(e);
-  };
+  const [state, dispatch] = useReducer(colorReducer, initialState);
+
   return (
     <>
-      <ColorPalette />
+      <ColorPalette hexColor={state.hexColor} dispatch={dispatch} />
+      <ColourSelector hexColor={state.hexColor} dispatch={dispatch} />
     </>
   );
 }
